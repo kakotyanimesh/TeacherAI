@@ -16,9 +16,9 @@ datasource db {
 
 model User {
   id              String      @default(uuid())  
-  email           String      @id
-  password        String
-  name            String
+  email           String      @id             @unique
+  password        String 
+  username        String      @unique
   schoolName      String
   lessonPlans     LessonPlan[]
 }

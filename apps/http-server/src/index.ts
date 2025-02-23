@@ -1,15 +1,17 @@
 import express from "express"
+import userRoutes from "./routes/user.routes"
+import cookieParser from "cookie-parser"
+
+require("dotenv").config({path : "../../.env"})
 
 const app = express()
 
+
 app.use(express.json())
+app.use(cookieParser())
 
 
-app.get("/", (req, res ) => {
-    res.json({
-        msg : "asdasda"
-    })
-})
+app.use("/api/v1/user", userRoutes)
 
 
 app.listen(4000, () => {
