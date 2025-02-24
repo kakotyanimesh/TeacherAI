@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["NODE_ENV", "Access_Token_Secret"],
+  "globalEnv": ["NODE_ENV", "Access_Token_Secret", "GEMINI_API_KEY", "Refresh_Token_Secret", "BackEndUrl"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

@@ -26,13 +26,14 @@ export const signup = async (req : Request, res : Response) => {
                 schoolName
             },
             select : {
-                username : true
+                id : true
             }
         })
 
         res.status(200).json({
             msg : "user created successfully",
-            username
+            username,
+            id : user.id
         })
 
     } catch (error) {

@@ -24,10 +24,11 @@ model User {
 }
 
 model LessonPlan {
-  id            Int               @default(autoincrement()) @id
-  user          User              @relation(fields: [userEmail], references: [email])
-  userEmail     String
-  subject       String
-  topic         String
-  createdAt     DateTime          @default(now())
+  id                Int               @default(autoincrement()) @id
+  user              User              @relation(fields: [userEmail], references: [email])
+  userEmail         String
+  subject           String
+  topic             String
+  lessonPlanTitle   String
+  createdAt         DateTime          @default(now())
 }
