@@ -49,6 +49,7 @@ export default function LessonPlanEditorPage({params} : {params : {id : string}}
             <div>
                 <h2>Concept map</h2>
                 <TextEditor value={lessonPlanData.conceptMap} onChange={(value) => setLessonPlanData({...lessonPlanData, conceptMap : value}) } />
+                <TextEditor value={lessonPlanData.teachingLearningResources} onChange={(value) => setLessonPlanData({...lessonPlanData, teachingLearningResources : value}) } />
             </div>
         </div>
     )
