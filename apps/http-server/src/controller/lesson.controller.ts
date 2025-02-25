@@ -109,23 +109,28 @@ export const  createPlans = async (req : Request, res : Response) => {
             }
         })
 
-        res.status(200).json({
-            id : lP.id,
-            title : title,
-            sections : {
-                conceptMap : `${conceptMapText}`,
-                mappingTable : `${mappingTableText}`,
-                instructionStrategies : `${mappingTableText}`,
-                teachingLearningResources : `${teachingLearningResourcesText}`,
-                introduction : `${intrpductionText}`,
-                essentialQuestions : `${essentialQuestionsText}`,
-                presentationTable : `${presentationTable}`,
-                summarization : `${summarizationText}`,
-                assessmentQuestions : `${assessmentQuestionsText}`,
-                homeworks : `${homeworksText}`,
-                suggestedReading : `${suggestedReadingText}`,
-                studentTeachingReflections : `${studentTeachingReflectionsText}`
+        const lpData = await prisma.lessonPlanData.create({
+            data : {
+                conceptMap : conceptMapText || "",
+                mappingTable : mappingTableText || "",
+                instructionStrategies : instructionStrategiesText || "",
+                teachingLearningResources : teachingLearningResourcesText || "",
+                introduction : intrpductionText || "",
+                essentialQuestions : essentialQuestionsText || "",
+                presentationTable : presentationTableText || "",
+                summarization : summarizationText || "",
+                assessmentQuestions : assessmentQuestionsText || "",
+                homeworks : homeworksText || "",
+                suggestedReading : suggestedReadingText || "",
+                studentTeachingReflections : studentTeachingReflectionsText || "",
+                lessonPlanId : lP.id
             }
+        })
+
+        res.status(200).json({
+            lessonPlanId : lP.id,
+            title : title,
+            lessonPlanDataId : lpData.id
         })
     } catch (error) {
         res.status(500).json({
@@ -133,3 +138,51 @@ export const  createPlans = async (req : Request, res : Response) => {
         })
     }
 }
+
+
+
+
+export const getLessonPlanData = async (req : Request, res : Response) => {
+    const lessonPlanId = req.params.lessonPlanId
+
+    if(!lessonPlanId){
+        res.status(403).json({
+            msg : "no lesson plan id sent"
+        })
+        return
+    }
+
+    try {
+        const data = await prisma.lessonPlan.findUnique({
+            where : {
+                id : Number(lessonPlanId)
+            },
+            include : { LessonPlanData : true}
+        })
+
+        res.status(200).json(data)
+        // instead of curly braces {data} in .json we can use (data) also 
+        // no more use of double data in frontend 
+    } catch (error) {
+        res.status(500).json({
+            msg : `something went wrong while getting lesson plan data ${JSON.stringify(error)}`
+        })
+    }
+}
+
+
+
+// sections : {
+            //     conceptMap : `${conceptMapText}`,
+            //     mappingTable : `${mappingTableText}`,
+            //     instructionStrategies : `${mappingTableText}`,
+            //     teachingLearningResources : `${teachingLearningResourcesText}`,
+            //     introduction : `${intrpductionText}`,
+            //     essentialQuestions : `${essentialQuestionsText}`,
+            //     presentationTable : `${presentationTable}`,
+            //     summarization : `${summarizationText}`,
+            //     assessmentQuestions : `${assessmentQuestionsText}`,
+            //     homeworks : `${homeworksText}`,
+            //     suggestedReading : `${suggestedReadingText}`,
+            //     studentTeachingReflections : `${studentTeachingReflectionsText}`
+            // }

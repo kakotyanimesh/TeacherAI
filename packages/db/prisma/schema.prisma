@@ -31,4 +31,24 @@ model LessonPlan {
   topic             String
   lessonPlanTitle   String
   createdAt         DateTime          @default(now())
+  LessonPlanData    LessonPlanData? 
+}
+
+
+model LessonPlanData {
+  id                            Int       @default(autoincrement())  @id
+  conceptMap                    String
+  mappingTable                  String
+  instructionStrategies         String
+  teachingLearningResources     String
+  introduction                  String
+  essentialQuestions            String
+  presentationTable             String
+  summarization                 String
+  assessmentQuestions           String
+  homeworks                     String
+  suggestedReading              String
+  studentTeachingReflections    String
+  lessonPlan                    LessonPlan  @relation(fields: [lessonPlanId],references: [id])
+  lessonPlanId                  Int         @unique
 }

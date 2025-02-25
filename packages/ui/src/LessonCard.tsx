@@ -1,9 +1,11 @@
 interface LessonType {
     title : string,
     topic : string,
-    date : string
+    date ?: string
 
 }
+
+
 
 export default function LessonCard({title, topic, date} : LessonType) {
     return (
