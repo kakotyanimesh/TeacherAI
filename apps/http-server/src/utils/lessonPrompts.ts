@@ -12,7 +12,7 @@ export const mappingTable = ({ subject, grade, duration, topic }: LessonPlanType
     
     dont use stars while giving response , response should use bullted points like 1,2,3 etc , word limit should be 100`;
 };
-x
+
 export const instructionStrategies = ({ subject, grade, duration, topic }: LessonPlanTypes) => {
     return `Develop instructional strategies for teaching the topic '${topic}' in the subject '${subject}' for grade ${grade}. Include active and passive learning techniques catering to different learning styles.
      dont use stars while giving response , response should use bullted points like 1,2,3 etc , word limit should be 100`;
