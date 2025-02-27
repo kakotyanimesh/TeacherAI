@@ -1,11 +1,9 @@
 "use client"
-import { Button } from '@repo/ui';
-import { Book, Key, Menu } from 'lucide-react';
+import { Book, Menu } from 'lucide-react';
 import Link from 'next/link';
-import localFont from 'next/font/local';
 import { useState } from 'react';
 
-const myFontTwo = localFont({src : "../public/fonts/jakarta.ttf"})
+
 
 export default function Navbar() {
 
@@ -26,17 +24,17 @@ export default function Navbar() {
     ]
 
     return (
-        <div className='flex flex-row justify-between mx-20 bg-red my-10 text-2xl'>
+        <div className='flex flex-row justify-between mx-32  text-2xl'>
             <div className='flex flex-row items-center'>
                 <Book size={36} color="#004080" strokeWidth={3} absoluteStrokeWidth />
-                <h1 className='text-2xl'>TeachAI</h1>
+                <h1 className='text-3xl'>TeachAI</h1>
             </div>
-            <div className='hidden md:block'>
+            {/* <div className='hidden md:block'>
             <div className='flex flex-row justify-center items-center text-center gap-10'>
                 <div className="flex gap-10">
                 {
                     navLinks.map((nav, key) => (
-                        <Link href={nav.link} key={key} className={`${myFontTwo.className}`}>
+                        <Link href={nav.link} key={key} >
                             {nav.title}
                         </Link>
                     ))
@@ -44,9 +42,9 @@ export default function Navbar() {
                 </div>
                 <Button title='signup' Onclick={() => alert("adasd")}/>
             </div>
-            </div>
+            </div> */}
             
-            {/* <div className='hidden'>
+            <div className=''>
                 <div>
                     <button onClick={() => setMenu(!menu)}>
                         <Menu size={48} color="#205fb1" strokeWidth={0.5} />
@@ -56,7 +54,7 @@ export default function Navbar() {
                             <div className='flex flex-col justify-center items-center'>
                                 {
                                     navLinks.map((nav, Key) => (
-                                        <Link key={Key} href={nav.link} className={`${myFontTwo.className}`}>
+                                        <Link key={Key} href={nav.link} >
                                             {nav.title}
                                         </Link>
                                     ))
@@ -65,7 +63,7 @@ export default function Navbar() {
                         )
                     }
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 }
