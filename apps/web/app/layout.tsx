@@ -1,21 +1,23 @@
 import "./globals.css";
 import "@repo/ui/styles.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import localFont from "next/font/local"
+import { JSX } from "react";
 
-const myFontOne = localFont({src : "../public/fonts/jakarta.ttf"})
+const myFontOne = localFont({src : "../public/fonts/seigeoBold.ttf"})
+
 
 export const metadata: Metadata = {
   title: "Teach AI",
   description: "an ai saas product that will help teachers to create lesson plans, lesson summary on the basis of ncert guidelines",
+  viewport: "width=device-width, initial-scale=1.0"
 };
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element  {
   return (
     <html lang="en">
       <body className={`${myFontOne.className} bg-blue-200`}>{children}</body>
