@@ -8,7 +8,7 @@ import Card from "./Card";
 export default function HomePage(){
 
     return (
-        <div className="flex flex-col justify-center items-center my-32 text-center space-y-54">
+        <div className="flex flex-col bg-blue-50 justify-center items-center mt-32 text-center md:space-y-54">
             <div className="flex flex-col items-center justify-center text-center space-y-10">
                 <h1 className="md:text-7xl text-2xl">Create Engaging Lesson Plans with AI</h1>
                 <p className="text-sm md:text-xl text-gray-600">Transform your teaching with our AI-powered lesson planning tool. Save time, increase engagement, and deliver better learning outcomes.</p>
@@ -21,13 +21,16 @@ export default function HomePage(){
             <div className="flex flex-col justify-center items-center space-y-3">
                 <h1 className="md:text-4xl text-xl font-semibold text-[#111827]">Why Choose Teach AI ?</h1>
                 <p className="text-gray-600 md:text-xl text-sm">Powerful features to transform your lesson planning process</p>
-                <div className="flex md:flex-row flex-col mx-20 py-10 gap-10">
+                <div className="flex md:flex-row flex-col md:mx-20 py-10 gap-10">
                     {
                         CardData.map((c, key) => (
                             <Card textH1={c.title} icons={c.icon} key={key} textP1={c.desc}/>
                         ))
                     }
                 </div>
+            </div>
+            <div>
+                
             </div>
         </div>
     )
@@ -51,3 +54,4 @@ const CardData = [
         desc : "Share and collaborate with other teachers to create the best learning experiences."
     }
 ]
+
